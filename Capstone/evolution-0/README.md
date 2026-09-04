@@ -16,3 +16,7 @@
 ## Systems Development Course Note
 
 \* Because my completed coursework included only one course directly focused on systems development, I am using CIDM 6325  as my primary Systems Development course for this inventory.
+
+## AI Disclaimer
+
+Generative AI usage includes ChatGPT software to confirm markdown table format, general spelling/grammar check, and git command refresher.
