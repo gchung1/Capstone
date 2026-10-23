@@ -1,0 +1,12 @@
+{% extends "appeals/base.html" %}
+
+{% block content %}
+<h1>Welcome to the Health Appeals Letter Generation Tool</h1>
+
+<p>
+Use this tool to generate a health insurance appeal letter quickly and privately.
+No data is stored, and no account is required.
+</p>
+
+<a href="{% url 'appeals:generate_letter' %}">Start Your Appeal Letter</a>
+{% endblock %}

@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Delete Template{% endblock %}
+
+{% block content %}
+<h1 class="mb-4">Delete Template</h1>
+
+<div class="alert alert-danger">
+    <strong>Are you sure?</strong><br>
+    You are about to delete: <strong>{{ template.name }}</strong>
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit" class="btn btn-danger">Yes, Delete</button>
+    <a href="{% url 'appeals:admin_template_list' %}" class="btn btn-secondary ms-2">
+        Cancel
+    </a>
+</form>
+
+{% endblock %}
