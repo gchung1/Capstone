@@ -30,7 +30,7 @@ Evolutions 1, 3, and 4 now answer their feedback. The Evolution 3 appraisal says
 
 Correct the Snowflake claim. The CIDM 6351 rows in Evolution 0 and Evolution 2 say Snowflake, and the cited sample, `DM/artifacts/CIDM-6351/15-cube.jpg`, is a pgAdmin screenshot of PostgreSQL. Evidence in Evolution 0 and Evolution 2 stays where it is until the claim and the sample agree.
 
-Check `CN/artifacts/CIDM-6340/AuditPlan.pdf`. It opens as blank pages in two PDF viewers. Export it again from the original, and confirm that it shows on GitHub. Until then I cannot check its evidence or confirm that the contact name is removed.
+Check `CN/artifacts/CIDM-6340/AuditPlan.pdf`. It opens as blank pages in two PDF viewers. The file is damaged, not empty: it holds 781 KB of data, but the content of all four pages cannot be read. Export it again from the original, and confirm that it shows on GitHub. Until then I cannot check its evidence or confirm that the contact name is removed.
 
 Finish Evolution 2. It still has no sources line, and lines 17, 33, and 51 use top-level headings.
 
