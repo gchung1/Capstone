@@ -34,7 +34,7 @@ Revise the proposal, and answer each question by number in `proposal/consultatio
 4. Which language model API will you call, and what does the prototype do when no key is present?
 5. What file will show that your first milestone is done?
 
-Your force-push on 2026-10-23 removed the evolution feedback from `feedback/`. I have added it again; keep that folder. Line 24 of `Capstone/portfolio/SS/artifacts/CIDM-6325/HealthAppeals/blog_project/settings.py` holds a Django secret key, committed on 2026-10-23. A key in a commit is shared with anyone who can read the repository, now or later. Follow the SECRET_KEY section of Django's deployment checklist (https://docs.djangoproject.com/en/stable/howto/deployment/checklist/#secret-key): generate a new key, load it from an environment variable, and keep it out of the repository. The old key stays in the Git history, so do not use it anywhere.
+Your force-push on 2026-10-23 removed the evolution feedback from `feedback/`. I have added it again. Keep that folder. Line 24 of `Capstone/portfolio/SS/artifacts/CIDM-6325/HealthAppeals/blog_project/settings.py` holds a Django secret key, committed on 2026-10-23. Anyone who can read the repository, now or later, can read a key in a commit. Follow the SECRET_KEY section of Django's deployment checklist (https://docs.djangoproject.com/en/stable/howto/deployment/checklist/#secret-key): generate a new key, load it from an environment variable, and keep it out of the repository. The old key stays in the Git history, so do not use it anywhere.
 
 ## What happens next
 
