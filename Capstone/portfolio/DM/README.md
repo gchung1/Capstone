@@ -14,7 +14,7 @@ My primary weakness is technical depth. I understand the concepts behind data ma
 
 My experience with Snowflake and data engineering is also foundational. I understand the purpose of data warehouses, schemas, ETL processes, and pipelines, but I have limited experience independently building sophisticated data workflows. I want to become more comfortable developing pipelines that handle larger, more complex, and changing datasets. Python is another area for improvement. I have used Python and Jupyter Notebook for basic data preparation, but I need greater proficiency with programming, automation, data processing, and integrating Python into larger data workflows. Overall, I understand the architecture and purpose of data management better than I understand the technical aspects.
 
-# What I Wish I Knew and What I May Be Missing
+## What I Wish I Knew and What I May Be Missing
 The primary area I want to develop is the ability to move from understanding a data environment to independently building and maintaining one. I understand what databases, ETL processes, and data pipelines accomplish, but I need more hands on experience designing and implementing them. I would like to become more proficient in advanced SQL, database design, Python, data engineering, Snowflake, and database performance. I also want experience working with larger and less structured datasets where issues such as data quality, scalability, automation, reliability, and changing requirements become more important. Ultimately, I want to move beyond understanding the big picture and become more capable of implementing the technical processes that make a well managed data environment possible.
 
 ## Supporting Evidence
@@ -22,7 +22,7 @@ The following coursework artifacts provide evidence of selected data management 
 
 CIDM 6350 – Data and Information Management: The database schema diagram provides evidence of database modeling and schema design.
 
-CIDM 6351 – Business Data Extraction, Transformation, and Load: The Snowflake screenshot provides evidence of my work in Snowflake. My coursework also included SQL queries using a LEFT JOIN with GROUPING SETS, ROLLUP, and CUBE. I completed this query work through a combination of independent effort and guidance, so it demonstrates practical experience while reflecting that I am still developing my ability to write complex queries independently.
+CIDM 6351 – Business Data Extraction, Transformation, and Load: The pgAdmin screenshot provides evidence of my work with PostgreSQL. My coursework also included SQL queries using a LEFT JOIN with GROUPING SETS, ROLLUP, and CUBE. I completed this query work through a combination of independent effort and guidance, so it demonstrates practical experience while reflecting that I am still developing my ability to write complex queries independently.
 
 CIDM 5310 and CIDM 6308: Coursework in these classes provides additional context for how data preparation and transformation support data analytics.
 
@@ -30,7 +30,9 @@ Jupyter Notebook and JSON: I have used these technologies in my coursework, but 
 
 These artifacts demonstrate selected parts of my coursework, rather than complete proficiency in every aspect of data management. My experience and independence vary by tool and task.
 
-# Contribution Toward the Capstone
+Sources and Resources: My work drew on course materials, my professor's instructions and feedback, database assignments and artifacts from CIDM 6350 and CIDM 6351, and online tutorials and technical documentation. My CIDM 6350 schema diagram and CIDM 6351 PostgreSQL query screenshot provide evidence of my database design and SQL work. These resources supported my understanding of database structure, SQL queries, data organization, and data management practices.
+
+## Contribution Toward the Capstone
 
 ## Why Data Management Is Integratable
 Data management is integratable with the other curricular areas as it provides the foundation for collecting, organizing, storing, transforming, and preparing information for use. Data analytics uses that information to generate insights and support decisions. Software systems provide applications through which users interact with the information while networking and cybersecurity support connectivity, access, privacy, and protection. Data management therefore provides the structure and reliable information needed for the other areas to function effectively.
@@ -48,5 +50,5 @@ My experience with SQL, databases, ETL, Snowflake, Python, and data preparation 
 ## New Integration Statement
 My data management coursework has shown me how structured data supports applications and analysis. In my capstone prototype, I plan to use SQLite to organize a small synthetic dataset of insurance denial records. Python will summarize patterns across denial reasons and service categories, while the Django application will support AI-assisted appeal-letter drafting and user review. Cybersecurity principles will guide responsible data handling. This smaller design lets me apply my coursework without requiring a complex data warehouse or real patient records.
 
-# AI Use
+## AI Use
 I used AI to help identify gaps in the evidence and capstone integration, and revise the wording of this appraisal with spelling and grammar checks. I used AI to ensure consistent formatting. I reviewed the suggestions and made the final editing decisions.
