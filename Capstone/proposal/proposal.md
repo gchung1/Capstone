@@ -1,48 +1,49 @@
-# First Draft of Capstone Project Proposal: Health Insurance Appeals Letter Generator and Operational Analytics
+# Capstone Project Proposal
 
-## 1. Pretext
-Health insurance denials can be confusing and stressful for patients and health insurance organizations. This prototype will be a small web application that helps users prepare an appeal letter draft with AI assistance. Users will review and edit the draft before finalizing it. The application will not submit appeals or make medical or coverage decisions. Basic operational analytics will explore patterns in denial records that could help health organizations identify areas for further investigation.
+## Healthcare Appeal Letter Drafting Assistant with Public Decision Analytics
 
-## 2. Process Flow
--Software and Systems (SS): A Django web application provides the user interface, workflow, AI integration, and results. Without SS, there is no working prototype.
--Data Management (DM): SQLite stores a small synthetic dataset for analysis. Without DM, the records could not be consistently stored and analyzed.
--Business Analytics (BA): Python summarizes denial patterns by denial reason and service category and presents simple tables or charts. Without BA, the prototype would not provide its operational analytics.
--Cybersecurity (CN): CN guides data minimization, API credential protection, and consideration of risks from application dependencies and external services. Without CN, the prototype would not demonstrate responsible security practices.
+### 1. Pretext
 
-The prototype path is user input → SS/Django → AI-assisted draft → user review/edit → DM/SQLite → BA/operational analytics with CN applied throughout.
+A healthcare appeals coordinator at a provider organization needs to draft letters after denied treatment requests. On one local webpage, the coordinator enters fictional case details and receives an editable letter informed by real public independent medical review (IMR) decisions. The coordinator reviews and copies the draft. The application neither submits appeals nor provides medical advice.
 
-![Health Insurance Appeals Letter Generator with Operational Analytics](diagram.png)
+### 2. Process Flow
 
-## 3. Synthesis Prototype
-The prototype will be a new Django web application built from end-to-end.
-Inputs: Approximately 30–50 synthetic records representing a limited prototype period with fields for synthetic record ID, date created, insurance company name, service category, denial reason, provider type, and plan type. The user will also enter information about a denied service for the appeal letter workflow.
-Processing: SS manages the application and user workflow. DM stores the synthetic records in SQLite. BA uses Python to summarize denial patterns by denial reason and service category. An existing language model API generates an initial appeal letter draft for human review and editing. CN guides credential protection and data minimization.
-Outputs: An AI assisted appeal letter draft and operational analytics showing trends/patterns.
-Interface: Django web application using HTML/Django templates.
-Complete path: A user enters denied service information, receives an AI assisted draft appeals letter, reviews and edits it, and backend views of analytics based on the synthetic SQLite records.
+![One connected workflow across the four capstone areas](diagram.png)
 
-## 4. Full Project
-The full project is a larger one year expansion of the prototype. It could add user accounts and authentication, role based access, cloud infrastructure, stronger security controls, larger or authorized organizational datasets, additional data governance, and enhanced operational analytics. Real healthcare information would require appropriate privacy protections, access controls, security assessment, and organizational oversight.
+**SS** collects the category, denial basis, and fictional details in Django. **CN** validates entries and protects secrets. **DM** retrieves public DMHC decisions from SQLite. **BA** counts matching, upheld, and overturned decisions. **SS** inserts those findings into a letter for coordinator review. Without SS there is no interface, CN no validation, DM no source records, or BA no computed context.
 
-## 5. Data
-Source	Authority	Grain	Access	Terms
-Project created synthetic denial dataset	Project author	One synthetic denial record	Created locally and stored with the project	Synthetic data - no real patient or insurance records
-Public CMS documentation used to inform terminology	Centers for Medicare & Medicaid Services	Reference information for denial/review categories	Public documentation	Used for reference - not the prototype dataset
-The synthetic dataset is relevant as it provides the records needed to demonstrate the analytics. Accountability comes from documenting that the records are project created and not actual insurer activity. The dataset will be available locally and checked for missing or inconsistent values. It will not contain personal information for purposes of this prototype - names, addresses, dates of birth, member IDs, claim numbers, MRNs, SSNs, diagnoses, or detailed medical histories. Considered for long-term expansion. The synthetic records are not intended to represent actual/specific insurance company behavior.
+### 3. Synthesis Prototype
 
-## 6. Tools and Platform
-The prototype will use Python, Django, SQLite, HTML/Django templates, Python data analysis tools, and an existing language model API. The application will run locally and will not require cloud deployment.
+The minimum demo has one Django form, SQLite table, category query, and editable letter. Python validates entries and inserts three calculated counts into a historical context paragraph that changes with the selected category. No dashboard, accounts, cloud hosting, or real patient data are included.
 
-## 7. Risks and First Milestone
-Key risks include AI generated text that will require human review and drawing conclusions from small counts. I will address these by requiring user review, documenting the dataset's limitations, and presenting summaries as exploratory rather than conclusive. My first milestone is to create the Django project and a working input form, then add letter drafting and analytics incrementally.
+### 4. Full Project
 
-## 8. Evidence I Build On
--Capstone/BA/evolution.md and its supporting Business Analytics artifacts
--Capstone/DM/evolution.md and artifacts/CIDM-6350/Schema.drawio.pdf
--Capstone/SS/evolution.md and prior HealthAppeals coursework artifacts
--Capstone/CN/evolution.md, artifacts/CIDM-6340/AuditPlan.pdf, and artifacts/CIDM-6341/SecurityReport.pdf
+A one year expansion could add authorized data, accounts, and cloud hosting. DM would govern records, BA analyze them, SS run the interface, and CN enforce privacy and access. These additions are outside this term's prototype.
 
-The capstone addresses a weakness identified in the appraisals: integrating the four curricular areas into one coherent application. My previous HealthAppeals project provides evidence of developing Django skills. However, this capstone will be a new project built from end-to-end with incorporation of all four pillars.
+### 5. Data
 
-## 9. AI Use
-I expect to use AI for troubleshooting review, formatting, and project organization. An existing language model API will generate initial appeal letter drafts from user provided denial information. AI generated drafts will require human review and editing, and AI use will be documented accordingly and as instructed. 
+| Source | Authority | Grain | Access | Terms |
+|---|---|---|---|---|
+| [IMR Determinations, Trend](https://data.ca.gov/@california-department-of-managed-health-care/independent-medical-review-imr-determinations-trend) | California DMHC | One IMR decision | Public CSV bulk file | Creative Commons Attribution (CC BY) |
+
+**Relevance:** Treatment, review type, and outcomes inform the letter. **Accountability:** The California Department of Managed Health Care (DMHC) publishes the data; the README will record its URL, terms, retrieval date, fields, and transformations.
+
+**Availability:** The public CSV and dictionary are retrievable by `Capstone/prototype/scripts/import_dmhc.py`. **Quality:** Decisions span years and categories; Python will check missing data, duplicates, and inconsistent values and log cleaning.
+
+**Synthetic data:** None in the analysis; fictional form inputs are demonstration-only, so synthetic-data conditions do not apply.
+
+### 6. Tools and Platform
+
+Python, Django, SQLite, and HTML run locally. A Python template drafts letters without a language-model API, key, or fee. The OpenAI Responses API is deferred pending approval. Django loads its secret from an environment variable. Case inputs are fictional.
+
+### 7. Risks and First Milestone
+
+Time, data changes, and privacy risks are managed through narrow scope, documented imports, and validation. By November 8, 2026, the form, SQLite import, and category query will work. `Capstone/prototype/evidence/milestone1.md` will record commands, results, counts, and a screenshot reference.
+
+### 8. Evidence I Build On
+
+Portfolio evidence: `Capstone/portfolio/BA/README.md`, `Capstone/portfolio/DM/README.md`, `Capstone/portfolio/SS/README.md`, and `Capstone/portfolio/CN/README.md`. My prior HealthAppeals work supports Django development; this prototype joins all four areas in one path.
+
+### 9. AI Use
+
+Help interpret code, troubleshoot, and review writing. The default letter draft uses a transparent Python template.
