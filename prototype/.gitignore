@@ -1,0 +1,15 @@
+# Python virtual environment
+.venv/
+
+# Python temporary files
+__pycache__/
+*.pyc
+
+# Local SQLite database
+db.sqlite3
+
+# Downloaded public dataset
+data/*.csv
+
+# Local secrets
+.env

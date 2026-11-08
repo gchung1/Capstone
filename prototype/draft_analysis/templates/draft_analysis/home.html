@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Healthcare Appeal Letter Generator with Public Decision Analytics</title>
+</head>
+<body>
+    <h1>Healthcare Appeal Letter Generator with Public Decision Analytics</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form>
+
+    {% if submitted %}
+        <p>Information submitted successfully!</p>
+    {% endif %}
+
+    {% if statistics %}
+        <h2>Historical DMHC Decision Analysis</h2>
+
+        <p><strong>Treatment Category:</strong> {{ statistics.category }}</p>
+
+        {% if statistics.total %}
+            <p><strong>Total Decisions:</strong> {{ statistics.total }}</p>
+            <p><strong>Health Plan Decisions Upheld:</strong> {{ statistics.upheld }}</p>
+            <p><strong>Health Plan Decisions Overturned:</strong> {{ statistics.overturned }}</p>
+        {% else %}
+            <p>No matching historical decisions were found for this treatment category.</p>
+        {% endif %}
+
+        <p>
+            <small>
+                These statistics describe historical California DMHC independent
+                medical review decisions. They do not predict the outcome of
+                an individual appeal.
+            </small>
+        </p>
+    {% endif %}
+
+    {% if draft_letter %}
+        <h2>Generated Appeal Letter Draft</h2>
+
+        <p>Review and edit this draft before using it.</p>
+
+        <textarea rows="20" cols="90" aria-label="Editable appeal letter draft">{{ draft_letter }}</textarea>
+    {% endif %}
+
+    <hr>
+
+    <h3>Disclaimer</h3>
+    <p>Enter fictional information about a denied healthcare service. Do not enter real patient information.</p>
+</body>
+</html>
