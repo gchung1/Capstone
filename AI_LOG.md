@@ -54,3 +54,11 @@ ChatGPT also provided code examples and documentation drafts that I reviewed and
 - **Kept or changed:** Updated forms.py to use Django's ChoiceField and retrieve valid treatment categories from the DMHC records. Kept the remaining form fields and existing letter generator unchanged.
 
 - **Verification:** Ran python .\prototype\manage.py check successfully. Tested the application in the browser with fictional information. Pharmacy returned 11,936 total decisions, 4,736 upheld, and 7,200 overturned. Surgery returned 83 total decisions, 33 upheld, and 50 overturned. Confirmed that changing the selected category changed the displayed statistics and letter generator content accordingly.
+
+### Review Type Dropdown and Double Filter Data Analysis
+
+- **Task and output:** Used ChatGPT to draft code to add a Review Type dropdown and update the Django database query to filter historical DMHC decisions by both treatment category and review type.
+
+- **Kept or changed:** Updated `forms.py` to retrieve valid review types from SQLite, `views.py` to use both selections when calculating statistics, and `home.html` to display the selected review type. Updated the generated letter to explain which records were included.
+
+- **Verification:** Ran Django's system check without errors. Tested Pharmacy with Medical Necessity in the browser and obtained 10,646 total decisions, 4,071 upheld, and 6,575 overturned. Independently verified all three counts using a direct Django database query. Confirmed that the webpage and editable letter displayed the correct selections and statistics.

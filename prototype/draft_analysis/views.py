@@ -13,16 +13,19 @@ def home(request):
         submitted = True
 
         category = form.cleaned_data["treatment_category"].strip()
+        review_type = form.cleaned_data["review_type"]
         denial_reason = form.cleaned_data["denial_reason"]
         justification = form.cleaned_data["justification"]
         documents = form.cleaned_data["supporting_documents"] or "Not specified"
 
         decisions = DMHCDecision.objects.filter(
-            treatment_category__iexact=category
+            treatment_category__iexact=category,
+            review_type=review_type
         )
 
         statistics = {
             "category": category,
+            "review_type": review_type,
             "total": decisions.count(),
             "upheld": decisions.filter(
                 determination="Upheld Decision of Health Plan"
@@ -35,8 +38,9 @@ def home(request):
         if statistics["total"] > 0:
             data_context = (
                 f"Historical California DMHC Independent Medical Review data "
-                f"include {statistics['total']} decisions in the "
-                f"{category} treatment category. Of those, "
+                f"include {statistics['total']} decisions matching "
+                f"the {category} treatment category and "
+                f"{review_type} review type. Of those, "
                 f"{statistics['upheld']} upheld the health plan's decision "
                 f"and {statistics['overturned']} overturned it. "
                 f"These historical figures do not predict the outcome "
@@ -45,7 +49,8 @@ def home(request):
         else:
             data_context = (
                 "No matching historical California DMHC decisions "
-                "were found for this treatment category."
+                f"were found for the {category} treatment category "
+                f"and {review_type} review type."
             )
 
         draft_letter = (
@@ -55,6 +60,7 @@ def home(request):
             "I am requesting reconsideration of a denied healthcare service "
             "based on the following fictional case information.\n\n"
             f"Treatment Category: {category}\n"
+            f"Review Type: {review_type}\n"
             f"Denial Reason: {denial_reason}\n\n"
             f"Medical Necessity Explanation:\n{justification}\n\n"
             f"Available Supporting Documentation:\n{documents}\n\n"
