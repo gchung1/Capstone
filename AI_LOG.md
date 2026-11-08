@@ -44,3 +44,13 @@ ChatGPT also provided code examples and documentation drafts that I reviewed and
 - **Kept or changed:** Updated the BA, DM, SS, CN, and skills inventory documents to accurately reflect my PostgreSQL coursework, real California DMHC data, and template based letter generator. Corrected artifact links in the BA portfolio and outdated folder paths in the proposal documents.
 
 - **Verification:**  Reviewed and saved the changes in VS Code, checked the modified files using git status --short, and ran git diff --check without errors. Used git grep to confirm the old folder paths were no longer present in the checked documents.
+
+## November 8, 2026 — Prototype Improvements
+
+### Treatment Category Dropdown and Testing
+
+- **Task and output:** Used ChatGPT to help review the existing Django form and views, replace the free text treatment category with a dropdown populated from the SQLite database, and run appropriate tests to test various scenarios.
+
+- **Kept or changed:** Updated forms.py to use Django's ChoiceField and retrieve valid treatment categories from the DMHC records. Kept the remaining form fields and existing letter generator unchanged.
+
+- **Verification:** Ran python .\prototype\manage.py check successfully. Tested the application in the browser with fictional information. Pharmacy returned 11,936 total decisions, 4,736 upheld, and 7,200 overturned. Surgery returned 83 total decisions, 33 upheld, and 50 overturned. Confirmed that changing the selected category changed the displayed statistics and letter generator content accordingly.
