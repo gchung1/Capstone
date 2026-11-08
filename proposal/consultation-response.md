@@ -14,7 +14,7 @@ Official publishing catalog: https://publish.data.ca.gov/dataset/independent-med
 
 Source metadata inspected: October 28, 2026.
 
-Records not yet imported. The first actual retrieval date will be entered in `Capstone/prototype/README.md` and logged. 
+Records not yet imported. The first actual retrieval date will be entered in `prototype/README.md` and logged.
 
 Four relevant checks:
 
@@ -42,11 +42,11 @@ This approach requires no API key, subscription, or paid service. The professor 
 
 ## 5. What file proves that the first milestone is complete?
 
-`Capstone/prototype/evidence/milestone1.md` will document the milestone by November 8, 2026. It will contain the exact setup/import commands, a successful `python manage.py check` result, a recorded row count after importing the official DMHC subset, a sample category query, and a reference to a screenshot of the running form. The companion `Capstone/prototype/README.md` will document the agency URL, the actual import date, selected fields, and reproduction instructions. These are future evidence files and not yet completed results.
+`prototype/evidence/milestone1.md` will document the milestone by November 8, 2026. It will contain the exact setup/import commands, a successful `python manage.py check` result, a recorded row count after importing the official DMHC subset, a sample category query, and a reference to a screenshot of the running form. The companion `prototype/README.md` will document the agency URL, the actual import date, selected fields, and reproduction instructions. These are future evidence files and not yet completed results.
 
 ## Additional required corrections
 
 - The revised diagram is a one-way flow corresponding to Section 2 of the proposal with a security validation gate before data processing and a single letter output.
-- The portfolio links now point to `Capstone/portfolio/{BA,DM,SS,CN}/README.md`.
+- The portfolio links now point to `portfolio/{BA,DM,SS,CN}/README.md`.
 - The `feedback/` folder is retained.
 - Django secret key remediation was completed on October 29, 2026. The exposed key was replaced with a reference to the `DJANGO_SECRET_KEY` environment variable in `settings.py`. A new random key was generated and stored outside the repository. Testing confirmed that the settings file successfully loads the new key. The previously exposed key remains in Git history and will not be reused.

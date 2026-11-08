@@ -36,3 +36,11 @@ ChatGPT also provided code examples and documentation drafts that I reviewed and
 - **Task and output:** Reviewed code and provided suggestions for protecting project files, correcting Django settings, general editing of the README and milestone evidence, and documenting AI use, and grammar, spelling, and consistent formatting per requirements.
 - **Kept or changed:** Removed the duplicate hardcoded secret key and excluded the local database, CSV, and virtual environment from Git.
 - **Verification:** Confirmed Git exclusions using `git check-ignore` and ran Django's system check successfully.
+
+### Portfolio Feedback and Documentation Corrections
+
+- **Task and output:**  Review and organize the professor's November 7 feedback, including checking my corrections and formatting to Snowflake and PostgreSQL descriptions, outdated synthetic data references, and repository file paths.
+
+- **Kept or changed:** Updated the BA, DM, SS, CN, and skills inventory documents to accurately reflect my PostgreSQL coursework, real California DMHC data, and template based letter generator. Corrected artifact links in the BA portfolio and outdated folder paths in the proposal documents.
+
+- **Verification:**  Reviewed and saved the changes in VS Code, checked the modified files using git status --short, and ran git diff --check without errors. Used git grep to confirm the old folder paths were no longer present in the checked documents.

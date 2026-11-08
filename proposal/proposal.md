@@ -28,7 +28,7 @@ A one year expansion could add authorized data, accounts, and cloud hosting. DM 
 
 **Relevance:** Treatment, review type, and outcomes inform the letter. **Accountability:** The California Department of Managed Health Care (DMHC) publishes the data; the README will record its URL, terms, retrieval date, fields, and transformations.
 
-**Availability:** The public CSV and dictionary are retrievable by `Capstone/prototype/scripts/import_dmhc.py`. **Quality:** Decisions span years and categories; Python will check missing data, duplicates, and inconsistent values and log cleaning.
+**Availability:** The public CSV and dictionary are retrievable by `prototype/scripts/import_dmhc.py`. **Quality:** Decisions span years and categories; Python will check missing data, duplicates, and inconsistent values and log cleaning.
 
 **Synthetic data:** None in the analysis; fictional form inputs are demonstration-only, so synthetic-data conditions do not apply.
 
@@ -38,11 +38,11 @@ Python, Django, SQLite, and HTML run locally. A Python template drafts letters w
 
 ### 7. Risks and First Milestone
 
-Time, data changes, and privacy risks are managed through narrow scope, documented imports, and validation. By November 8, 2026, the form, SQLite import, and category query will work. `Capstone/prototype/evidence/milestone1.md` will record commands, results, counts, and a screenshot reference.
+Time, data changes, and privacy risks are managed through narrow scope, documented imports, and validation. By November 8, 2026, the form, SQLite import, and category query will work. `prototype/evidence/milestone1.md` will record commands, results, counts, and a screenshot reference.
 
 ### 8. Evidence I Build On
 
-Portfolio evidence: `Capstone/portfolio/BA/README.md`, `Capstone/portfolio/DM/README.md`, `Capstone/portfolio/SS/README.md`, and `Capstone/portfolio/CN/README.md`. My prior HealthAppeals work supports Django development; this prototype joins all four areas in one path.
+Portfolio evidence: `portfolio/BA/README.md`, `portfolio/DM/README.md`, `portfolio/SS/README.md`, and `portfolio/CN/README.md`. My prior HealthAppeals work supports Django development; this prototype joins all four areas in one path.
 
 ### 9. AI Use
 
