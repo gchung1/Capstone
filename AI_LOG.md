@@ -9,7 +9,7 @@
 
 This capstone was developed from my own project idea and decisions about its purpose, features, and overall direction. My initial coding knowledge and code ideas were basic, thus I used ChatGPT to cross check my approach, improve code, troubleshoot problems, and help turn my ideas into a working application.
 
-ChatGPT also provided code examples and documentation drafts that I reviewed and tested prior to accepting. In general, AI was and will be used to check formatting and grammar/spellcheck for all documents I drafted for consistency. Additionally, AI was and will be used to help keep project organized per requirements and deadlines.
+ChatGPT also provided code examples and documentation drafts that I reviewed and tested prior to accepting. In general, AI was and will be used to check formatting and grammar/spellcheck for all documents I drafted for consistency. Additionally, AI was and will be used to help keep project organized per requirements and deadlines. Additionally, it was and will be used to maintain AI use and task log here.
 
 ## November 7, 2026 — Prototype/Milestone Development
 
@@ -39,7 +39,7 @@ ChatGPT also provided code examples and documentation drafts that I reviewed and
 
 ### Portfolio Feedback and Documentation Corrections
 
-- **Task and output:**  Review and organize the professor's November 7 feedback, including checking my corrections and formatting to Snowflake and PostgreSQL descriptions, outdated synthetic data references, and repository file paths.
+- **Task and output:**  Review and organize the professor's November 7 feedback including checking my corrections and formatting to Snowflake and PostgreSQL descriptions, outdated synthetic data references, and repository file paths.
 
 - **Kept or changed:** Updated the BA, DM, SS, CN, and skills inventory documents to accurately reflect my PostgreSQL coursework, real California DMHC data, and template based letter generator. Corrected artifact links in the BA portfolio and outdated folder paths in the proposal documents.
 
@@ -62,3 +62,11 @@ ChatGPT also provided code examples and documentation drafts that I reviewed and
 - **Kept or changed:** Updated `forms.py` to retrieve valid review types from SQLite, `views.py` to use both selections when calculating statistics, and `home.html` to display the selected review type. Updated the generated letter to explain which records were included.
 
 - **Verification:** Ran Django's system check without errors. Tested Pharmacy with Medical Necessity in the browser and obtained 10,646 total decisions, 4,071 upheld, and 6,575 overturned. Independently verified all three counts using a direct Django database query. Confirmed that the webpage and editable letter displayed the correct selections and statistics.
+
+### DMHC Source Reference IDs
+
+- **Task and output:** ChatGPT was used to help correct drafted code to display source reference IDs from the real California DMHC records used in the historical analysis.
+
+- **Kept or changed:** Corrected code. Updated views.py to retrieve three reference IDs matching the selected treatment category and review type. Updated home.html to display those IDs alongside the calculated statistics.
+
+- **Verification:** Ran a direct Django database query that returned MN01-594, MN01-606, and MN01-607 for Pharmacy and Medical Necessity. Tested the webpage and confirmed that the three IDs appeared correctly. Verified that the historical counts remained 10,646 total, 4,071 upheld, and 6,575 overturned, and that the editable letter still generated successfully.

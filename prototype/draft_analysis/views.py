@@ -27,6 +27,10 @@ def home(request):
             "category": category,
             "review_type": review_type,
             "total": decisions.count(),
+            "source_ids": list(
+                decisions.order_by("reference_id")
+                .values_list("reference_id", flat=True)[:3]
+            ),
             "upheld": decisions.filter(
                 determination="Upheld Decision of Health Plan"
             ).count(),

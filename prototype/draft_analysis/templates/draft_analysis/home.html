@@ -28,6 +28,7 @@
             <p><strong>Total Decisions:</strong> {{ statistics.total }}</p>
             <p><strong>Health Plan Decisions Upheld:</strong> {{ statistics.upheld }}</p>
             <p><strong>Health Plan Decisions Overturned:</strong> {{ statistics.overturned }}</p>
+            <p><strong>Example DMHC Source Reference IDs:</strong> {{ statistics.source_ids|join:", " }}</p>
         {% else %}
             <p>No matching historical decisions were found for this treatment category and review type.</p>
         {% endif %}
