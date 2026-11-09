@@ -80,3 +80,21 @@ ChatGPT also provided code examples and documentation drafts that I reviewed and
 - **Verification:** Ran `python .\prototype\manage.py test draft_analysis` successfully. All three tests passed without errors. Confirmed that Django used a temporary test database without changing the imported DMHC records.
 
 Also, added a fourth automated test using fictional decision records in Django's temporary test database. Verified that the application correctly filters by both treatment category and review type, calculates the expected decision counts, and displays the matching source reference IDs. Ran all four automated tests successfully without errors.
+
+## November 9, 2026 — Public Dataset Reproducibility
+
+### DMHC Full Dataset Download Script
+
+- **Task and output:** Helped draft code and troubleshoot `prototype/scripts/download_dmhc.py` in order for others to retrieve the complete official California DMHC CSV dataset without storing the large file on GitHub.
+
+- **Kept or changed:** Replaced the original Python download method after it received an HTTP 403 error. Updated the script to use `curl`, verify the expected CSV column headings, skip downloading if the file already exists, and remove incomplete downloads if an error occurs. Updated only the dataset download instructions in `prototype/README.md`.
+
+- **Verification:** Confirmed that the script skipped the existing CSV. Tested a complete temporary download of approximately 81.45 MB, verified that the script accepted the CSV headings, and removed the temporary file afterward. Ran `git diff --check` without errors
+
+### Clone Reproducibility Test
+
+- **Task and output:** Used ChatGPT for code guidance and troubleshooting to test whether the capstone could be recreated from a fresh GitHub clone using the documented setup instructions.
+
+- **Kept or changed:** Created a separate temporary copy of the repository for testing. No application code, original database, or original CSV files were changed.
+
+- **Verification:** Successfully cloned the repository, created a new Python virtual environment, installed Django 5.2.19, ran database migrations, downloaded the complete official DMHC CSV, and imported 42,710 records. All four automated Django tests passed. Verified that the application displayed the expected Pharmacy and Medical Necessity statistics (10,646 total, 4,071 upheld, and 6,575 overturned), showed the matching source reference IDs, and generated an editable appeal letter.
