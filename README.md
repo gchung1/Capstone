@@ -4,6 +4,7 @@ CIDM 6395 — Fall 2026 Capstone Project
 
 This repository contains my capstone project, including the Django prototype, project proposal, and curricular portfolio.
 
+- [Professional Biography](portfolio/BIO.md)
 - [Prototype and setup instructions](prototype/README.md)
 - [Project proposal](proposal/proposal.md)
 - [Skills inventory](portfolio/inventory/README.md)

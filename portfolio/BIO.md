@@ -1,0 +1,9 @@
+# Professional Biography
+
+My professional background is within healthcare including experience working in provider offices and various health insurance companies. My experience across different areas of healthcare has given me a broad understanding of the industry, healthcare operations, and the challenges involved in healthcare processes and insurance related decisions.
+
+I am pursuing a Master of Science in Computer Information Systems and Business Analytics (MS-CISBA) to expand my knowledge and skills in data analytics, data management, software development, and technology. Through my coursework, I have gained practical experience with tools such as Python, SQL, PostgreSQL, Tableau, Power BI, and GitHub. I have also developed a stronger understanding of how technology, data, and business processes work together to support organizational goals and decision making.
+
+For my capstone project, I developed a Healthcare Appeal Letter Generator with Public Decision Analytics. This Django application uses real, publicly available California Department of Managed Health Care (DMHC) decision records stored in SQLite to calculate historical appeal outcomes. It allows users to enter fictional case information, view historical statistics, and generate an editable appeal letter draft using a predefined template. The project demonstrates my ability to connect healthcare knowledge with business analytics, data management, and software development while considering privacy and responsible data handling. It is a culmination of my experience, a known business need, and skills I have acquired from my degree.
+
+Moving forward, I hope to apply my healthcare experience and the knowledge gained through the MS-CISBA program to help improve healthcare processes through data analytics, technology, and practical business solutions.
