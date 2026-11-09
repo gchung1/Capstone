@@ -12,7 +12,7 @@ California Department of Managed Health Care (DMHC)
 Independent Medical Review (IMR) Determinations, Trend
 
 Official dataset:
-https://data.ca.gov/@california-department-of-managed-health-care/independent-medical-review-imr-determinations-trend
+[https://data.ca.gov/@california-department-of-managed-health-care/independent-medical-review-imr-determinations-trend](https://data.ca.gov/@california-department-of-managed-health-care/independent-medical-review-imr-determinations-trend)
 
 CSV downloaded: November 7, 2026.
 
@@ -54,11 +54,15 @@ Create the SQLite database tables:
 python manage.py migrate
 ```
 
-Download the official CSV dataset and save it as:
+Download the official CSV dataset using the provided script:
 
-`data/dmhc_imr.csv`
+```powershell
+python scripts/download_dmhc.py
+```
 
-Create the `data` folder inside `prototype` if it does not already exist.
+The download script requires `curl` and saves the complete CSV dataset as `data/dmhc_imr.csv`. If the file already exists, the script skips the download.
+
+Alternatively, download the CSV manually from the official dataset website listed above. Create the `data` folder inside `prototype` if it does not already exist, and save the file as `data/dmhc_imr.csv`.
 
 Import the public decisions:
 
@@ -84,7 +88,7 @@ Start the application:
 python manage.py runserver
 ```
 
-Open http://127.0.0.1:8000/ in a browser.
+Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in a browser.
 
 Press `Ctrl + C` in the terminal to stop the application.
 
