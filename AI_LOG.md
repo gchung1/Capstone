@@ -70,3 +70,13 @@ ChatGPT also provided code examples and documentation drafts that I reviewed and
 - **Kept or changed:** Corrected code. Updated views.py to retrieve three reference IDs matching the selected treatment category and review type. Updated home.html to display those IDs alongside the calculated statistics.
 
 - **Verification:** Ran a direct Django database query that returned MN01-594, MN01-606, and MN01-607 for Pharmacy and Medical Necessity. Tested the webpage and confirmed that the three IDs appeared correctly. Verified that the historical counts remained 10,646 total, 4,071 upheld, and 6,575 overturned, and that the editable letter still generated successfully.
+
+### Input Validation and Testing
+
+- **Task and output:** Reviewed the existing Django form validation and help draft automated tests for required fields, character limits, and invalid treatment category selections.
+
+- **Kept or changed:** Kept the existing form validation without adding unnecessary code and tests. Updated `tests.py` to include three automated tests to verify the existing validation rules.
+
+- **Verification:** Ran `python .\prototype\manage.py test draft_analysis` successfully. All three tests passed without errors. Confirmed that Django used a temporary test database without changing the imported DMHC records.
+
+Also, added a fourth automated test using fictional decision records in Django's temporary test database. Verified that the application correctly filters by both treatment category and review type, calculates the expected decision counts, and displays the matching source reference IDs. Ran all four automated tests successfully without errors.
