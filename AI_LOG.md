@@ -98,3 +98,21 @@ Also, added a fourth automated test using fictional decision records in Django's
 - **Kept or changed:** Created a separate temporary copy of the repository for testing. No application code, original database, or original CSV files were changed.
 
 - **Verification:** Successfully cloned the repository, created a new Python virtual environment, installed Django 5.2.19, ran database migrations, downloaded the complete official DMHC CSV, and imported 42,710 records. All four automated Django tests passed. Verified that the application displayed the expected Pharmacy and Medical Necessity statistics (10,646 total, 4,071 upheld, and 6,575 overturned), showed the matching source reference IDs, and generated an editable appeal letter.
+
+## November 10, 2026 — Synthesis Paper and Slides
+
+### Synthesis Paper
+
+- **Task and output:** ChatGPT helped review (spelling/grammar/formatting) and tighten/organize the capstone synthesis paper based on what I had drafted.
+
+- **Kept or changed:** Kept reviewed and approved spelling/grammar/formatting suggestions, and organization/tightening that focused on the four curricular areas, portfolio evidence, prototype feasibility, and future expansion. Finalized the approved version as `deliverables/synthesis-paper.pdf`.
+
+- **Verification:** Reviewed the completed paper. Confirmed that it addresses the professor's synthesis paper requirements and that the PDF is saved in the required `deliverables` folder.
+
+### PowerPoint Presentation
+
+- **Task and output:** ChatGPT help tighten and format the presentation - spelling/grammar and improve the overall visual design from what I had initially drafted.
+
+- **Kept or changed:** Reviewed and customized the slides using Microsoft PowerPoint 2013. Kept the presentation focused on my healthcare background, curricular integration, working prototype, historical DMHC decision data, testing, limitations, and one year vision according to the main topics required and discussed within my synthesis paper.
+
+- **Verification:** Confirmed that the presentation opens in Microsoft PowerPoint 2013 and that the final `slides.pptx` file is saved in the required `deliverables` folder.
