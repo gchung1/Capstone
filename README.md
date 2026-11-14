@@ -14,6 +14,7 @@ This repository contains my capstone project, including the Django prototype, pr
 - [Computer Networks portfolio](portfolio/CN/README.md)
 - [Capstone Synthesis Paper](deliverables/synthesis-paper.pdf)
 - [Capstone Presentation Slides](deliverables/slides.pptx)
+- [Narrated Capstone Presentation Video](deliverables/video.mp4)
 
 ## AI Use
 
