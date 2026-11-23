@@ -1,3 +1,4 @@
+
 import csv
 import os
 import sys
@@ -32,6 +33,7 @@ def import_data():
     missing = 0
     duplicates = 0
     invalid_years = 0
+    normalized_categories = 0
 
     seen_ids = set()
     determinations = Counter()
@@ -64,6 +66,15 @@ def import_data():
                     missing += 1
                     continue
 
+                # Standardize known treatment category names.
+                original_category = values["TreatmentCategory"]
+
+                if original_category.lower() == "gen surg proc":
+                    values["TreatmentCategory"] = "Gen Surg Proc"
+
+                if original_category.lower() in ["dme", "durable med equip"]:
+                    values["TreatmentCategory"] = "Durable Med Equip"
+
                 try:
                     year = int(values["ReportYear"])
                 except ValueError:
@@ -77,6 +88,9 @@ def import_data():
                     continue
 
                 seen_ids.add(reference_id)
+
+                if original_category != values["TreatmentCategory"]:
+                    normalized_categories += 1
 
                 batch.append(DMHCDecision(
                     reference_id=reference_id,
@@ -103,6 +117,7 @@ def import_data():
     print(f"Skipped - missing values: {missing}")
     print(f"Skipped - duplicate reference IDs: {duplicates}")
     print(f"Skipped - invalid years: {invalid_years}")
+    print(f"Treatment category labels normalized: {normalized_categories}")
     print(f"Distinct treatment categories: {len(categories)}")
     print(f"Determination values: {dict(determinations)}")
     print(f"Top treatment categories: {categories.most_common(10)}")
@@ -110,3 +125,5 @@ def import_data():
 
 if __name__ == "__main__":
     import_data()
+
+
