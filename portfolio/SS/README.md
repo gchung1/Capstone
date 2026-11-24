@@ -39,7 +39,7 @@ CIDM 5310 – Artificial Intelligence and Machine Learning: Coursework provided 
 
 CIDM 6350 – Database Systems: Coursework developed my understanding of SQL, relational databases, entity-relationship diagrams, data modeling, and normalization. These skills support the design of structured data for organizing and analyzing health insurance appeal information.
 
-CIDM 6351 – Business Data Extraction, Transformation, and Load: My coursework introduced data warehousing, ETL, data pipelines, and Snowflake concepts. My hands-on database experience involved PostgreSQL through pgAdmin, including SQL queries using GROUPING SETS, ROLLUP, and CUBE. I also gained experience with Python, Jupyter Notebook, and structured data formats such as CSV and JSON. These skills support preparing and analyzing the public DMHC decision records used in my capstone.
+CIDM 6351 – Business Data Extraction, Transformation, and Load: My coursework introduced data warehousing, ETL, data pipelines, and Snowflake concepts. My hands-on database experience involved PostgreSQL through pgAdmin, including SQL queries using GROUPING SETS, ROLLUP, and CUBE. These skills support preparing and analyzing the public DMHC decision records used in my capstone.
 
 CIDM 6308 – Data Visualization and Analytics: Coursework introduced tools such as Tableau, Power BI, and RapidMiner for data analysis, visualization, and interactive dashboards. These skills could help present denial trends and other findings in an understandable format.
 

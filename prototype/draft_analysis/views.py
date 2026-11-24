@@ -1,3 +1,4 @@
+
 from django.shortcuts import render
 from .forms import AppealForm
 from .models import DMHCDecision
@@ -8,6 +9,16 @@ def home(request):
     submitted = False
     statistics = None
     draft_letter = None
+
+    # Get available years from the DMHC database.
+    years = (
+        DMHCDecision.objects
+        .order_by("-report_year")
+        .values_list("report_year", flat=True)
+        .distinct()
+    )
+
+    selected_year = request.POST.get("report_year", "")
 
     if request.method == "POST" and form.is_valid():
         submitted = True
@@ -23,9 +34,19 @@ def home(request):
             review_type=review_type
         )
 
+        # Filter historical decisions if a year was selected.
+        if selected_year:
+            if selected_year.isdigit() and int(selected_year) in years:
+                decisions = decisions.filter(report_year=int(selected_year))
+            else:
+                selected_year = ""
+
+        year_description = selected_year if selected_year else "All Years"
+
         statistics = {
             "category": category,
             "review_type": review_type,
+            "year": year_description,
             "total": decisions.count(),
             "source_ids": list(
                 decisions.order_by("reference_id")
@@ -42,8 +63,8 @@ def home(request):
         if statistics["total"] > 0:
             data_context = (
                 f"Historical California DMHC Independent Medical Review data "
-                f"include {statistics['total']} decisions matching "
-                f"the {category} treatment category and "
+                f"for {year_description} include {statistics['total']} decisions "
+                f"matching the {category} treatment category and "
                 f"{review_type} review type. Of those, "
                 f"{statistics['upheld']} upheld the health plan's decision "
                 f"and {statistics['overturned']} overturned it. "
@@ -52,9 +73,9 @@ def home(request):
             )
         else:
             data_context = (
-                "No matching historical California DMHC decisions "
-                f"were found for the {category} treatment category "
-                f"and {review_type} review type."
+                f"No matching historical California DMHC decisions "
+                f"were found for {year_description}, the {category} treatment "
+                f"category, and {review_type} review type."
             )
 
         draft_letter = (
@@ -81,4 +102,6 @@ def home(request):
         "submitted": submitted,
         "statistics": statistics,
         "draft_letter": draft_letter,
+        "years": years,
+        "selected_year": selected_year,
     })

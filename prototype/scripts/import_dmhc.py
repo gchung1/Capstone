@@ -40,6 +40,10 @@ def import_data():
     categories = Counter()
     batch = []
 
+    # Track possible treatment category inconsistencies.
+    category_names_seen = {}
+    possible_variations = set()
+
     # Allow long text in unused CSV columns such as Findings.
     csv.field_size_limit(10_000_000)
 
@@ -92,6 +96,25 @@ def import_data():
                 if original_category != values["TreatmentCategory"]:
                     normalized_categories += 1
 
+                # Check for possible category spelling or spacing variations.
+                category_name = values["TreatmentCategory"]
+                cleaned_category = " ".join(category_name.split())
+
+                if category_name != cleaned_category:
+                    possible_variations.add(
+                        f"Extra spaces: {category_name}"
+                    )
+
+                category_key = cleaned_category.lower()
+
+                if category_key in category_names_seen:
+                    if category_names_seen[category_key] != category_name:
+                        possible_variations.add(
+                            f"Different labels: {category_names_seen[category_key]} / {category_name}"
+                        )
+                else:
+                    category_names_seen[category_key] = category_name
+
                 batch.append(DMHCDecision(
                     reference_id=reference_id,
                     report_year=year,
@@ -122,8 +145,14 @@ def import_data():
     print(f"Determination values: {dict(determinations)}")
     print(f"Top treatment categories: {categories.most_common(10)}")
 
+    print("\nPOSSIBLE TREATMENT CATEGORY INCONSISTENCIES")
+
+    if possible_variations:
+        for variation in sorted(possible_variations):
+            print(variation)
+    else:
+        print("No additional capitalization or spacing inconsistencies found.")
+
 
 if __name__ == "__main__":
     import_data()
-
-

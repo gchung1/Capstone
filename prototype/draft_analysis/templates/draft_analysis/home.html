@@ -11,6 +11,20 @@
     <form method="post">
         {% csrf_token %}
         {{ form.as_p }}
+
+        <p>
+            <label for="report_year">Select Report Year:</label>
+            <select name="report_year" id="report_year">
+                <option value="">All Years</option>
+                {% for year in years %}
+                    <option value="{{ year }}"
+                        {% if selected_year == year|stringformat:"s" %}selected{% endif %}>
+                        {{ year }}
+                    </option>
+                {% endfor %}
+            </select>
+        </p>
+
         <button type="submit">Submit</button>
     </form>
 
@@ -23,6 +37,7 @@
 
         <p><strong>Treatment Category:</strong> {{ statistics.category }}</p>
         <p><strong>Review Type:</strong> {{ statistics.review_type }}</p>
+        <p><strong>Report Year:</strong> {{ statistics.year }}</p>
 
         {% if statistics.total %}
             <p><strong>Total Decisions:</strong> {{ statistics.total }}</p>
@@ -30,7 +45,7 @@
             <p><strong>Health Plan Decisions Overturned:</strong> {{ statistics.overturned }}</p>
             <p><strong>Example DMHC Source Reference IDs:</strong> {{ statistics.source_ids|join:", " }}</p>
         {% else %}
-            <p>No matching historical decisions were found for this treatment category and review type.</p>
+            <p>No matching historical decisions were found for the selected treatment category, review type, and year.</p>
         {% endif %}
 
         <p>

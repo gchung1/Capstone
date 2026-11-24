@@ -116,3 +116,45 @@ Also, added a fourth automated test using fictional decision records in Django's
 - **Kept or changed:** Reviewed and customized the slides using Microsoft PowerPoint 2013. Kept the presentation focused on my healthcare background, curricular integration, working prototype, historical DMHC decision data, testing, limitations, and one year vision according to the main topics required and discussed within my synthesis paper.
 
 - **Verification:** Confirmed that the presentation opens in Microsoft PowerPoint 2013 and that the final `slides.pptx` file is saved in the required `deliverables` folder.
+
+## November 23, 2026 — Capstone Revisions per Debrief Feedback
+
+### DMHC Treatment Category Data Quality
+
+- **Task and output:** Used ChatGPT to review existing `import_dmhc.py`, `models.py`, and `forms.py` files. ChatGPT suggested simple code changes to standardize confirmed equivalent treatment category labels and later add a basic check for possible capitalization and spacing inconsistencies.
+
+- **Kept or changed:** Updated `prototype/scripts/import_dmhc.py` to standardize `Gen Surg proc` as `Gen Surg Proc` and `DME` as `Durable Med Equip`. Retained `DME MACs` as a separate category. Added an import counter and a report of possible category-label inconsistencies without automatically changing uncertain labels. The original database model and form structure were not changed.
+
+- **Verification:** Ran the Python syntax check and reimported the CSV. The script examined 42,749 rows, imported 42,710 records, skipped 39 duplicate reference IDs, and reported 2,681 normalized category labels. Confirmed that the database and webpage dropdown showed `Gen Surg Proc` and `Durable Med Equip` without separate `Gen Surg proc` or `DME` entries. The later consistency check identified `Admin Misc  Invest` as having extra spaces; it was reported but left unchanged. Created a local SQLite database backup before the initial reimport.
+
+### Report Year Filter and Historical Analytics
+
+- **Task and output:** Used ChatGPT to review existing Django view and HTML template and suggest a basic year dropdown code in response to feedback that the historical counts combined all available report years.
+
+- **Kept or changed:** Updated `prototype/draft_analysis/views.py` and `prototype/draft_analysis/templates/draft_analysis/home.html` to add an optional Report Year selection with `All Years` as the default. The selected year filters the historical decision counts and is included in the generated letter's Public Decision Data Context. Retained the existing treatment category, review type, and appeal letter workflow.
+
+- **Verification:** Tested the application in the browser with fictional information. Confirmed that the selected year appeared in the historical analysis and that `for 2025` appeared in the generated letter's Public Decision Data Context.
+
+### Automated Test Improvements
+
+- **Task and output:** Used ChatGPT to code additional tests for an invalid category test used an empty test database. ChatGPT also suggested testing the new year filter.
+
+- **Kept or changed:** Updated `prototype/draft_analysis/tests.py` to create known valid test choices, verify that a valid treatment category is accepted, check required fields with valid selections, and verify that choosing a year limits the returned statistics. Retained the original testing purposes and used fictional records in Django's test database.
+
+- **Verification:** Ran `python manage.py test draft_analysis` after the year filter and test updates. All seven tests passed with no Django system-check issues. The tests have not yet been rerun after the final category-inconsistency reporting change.
+
+### README and Portfolio Evidence Corrections
+
+- **Task and output:** Used ChatGPT to review my README, competency inventory, and Systems Development appraisal against the professor's feedback and for formatting/spelling/grammar.
+
+- **Kept or changed:** Updated `prototype/README.md` with `source .venv/bin/activate`, documentation of the year filter and category normalization, and the seven automated tests. Updated only the CIDM 6351 row in `portfolio/inventory/README.md` and removed the unsupported Python, Jupyter Notebook, and JSON sentence from `portfolio/SS/README.md`. Kept the remaining course entries, existing evidence links, appraisal structure, and overall wording as close to the originals as possible.
+
+- **Verification:** Reviewed and saved the documents in VS Code. Confirmed with `git status --short` that the updated README and portfolio files were detected as modified. The macOS/Linux instructions were documented but not tested on those operating systems.
+
+### Synthesis Paper Revisions
+
+- **Task and output:** Used ChatGPT to review revised synthesis paper for formatting, spelling, grammar, and alignment with feedback.
+
+- **Kept or changed:** Added repository paths for coursework artifacts and curricular appraisals, briefly documented the year filter and category standardization, updated the test discussion from four original tests to seven current tests, and added a short one year learning plan for Python, database development, Django architecture/testing, and cybersecurity implementation. Preserved the existing introduction, personal reflections, scope decisions, and overall paper structure. Replaced the local `deliverables/synthesis-paper.pdf` with the revised version.
+
+- **Verification:** Reviewed the proposed changes and replaced the PDF in the Capstone folder. Confirmed that Git listed `deliverables/synthesis-paper.pdf` as modified. The revised paper has not yet been included in a consolidated commit.

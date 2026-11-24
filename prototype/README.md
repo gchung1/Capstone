@@ -1,3 +1,4 @@
+
 # Healthcare Appeal Letter Generator with Public Decision Analytics
 
 ## Project Overview
@@ -12,7 +13,7 @@ California Department of Managed Health Care (DMHC)
 Independent Medical Review (IMR) Determinations, Trend
 
 Official dataset:
-[https://data.ca.gov/@california-department-of-managed-health-care/independent-medical-review-imr-determinations-trend](https://data.ca.gov/@california-department-of-managed-health-care/independent-medical-review-imr-determinations-trend)
+https://data.ca.gov/@california-department-of-managed-health-care/independent-medical-review-imr-determinations-trend
 
 CSV downloaded: November 7, 2026.
 
@@ -22,7 +23,7 @@ The initial import included 42,710 records and skipped 39 duplicate reference ID
 
 ## Setup
 
-These instructions are for Windows PowerShell. The prototype was developed and tested using Python 3.13.7 and Django 5.2.19.
+These instructions are for Windows PowerShell, with an additional activation command for macOS and Linux. The prototype was developed and tested using Python 3.13.7 and Django 5.2.19.
 
 After cloning or downloading the Capstone repository, open a terminal in the main Capstone folder and navigate to the prototype folder:
 
@@ -40,8 +41,16 @@ python -m venv .venv
 
 Activate the virtual environment:
 
+Windows PowerShell:
+
 ```powershell
 .\.venv\Scripts\Activate.ps1
+```
+
+macOS and Linux:
+
+```bash
+source .venv/bin/activate
 ```
 
 Install the required package:
@@ -90,7 +99,7 @@ Start the application:
 python manage.py runserver
 ```
 
-Open [http://127.0.0.1:8000/](http://127.0.0.1:8000/) in a browser.
+Open http://127.0.0.1:8000/ in a browser.
 
 Press `Ctrl + C` in the terminal to stop the application.
 
@@ -100,8 +109,9 @@ The application includes:
 
 - A treatment category dropdown populated from the SQLite database.
 - A review type dropdown populated from the SQLite database.
+- A report year dropdown with an All Years option.
 - Fields for fictional denial information, medical necessity explanation, and supporting documents.
-- Historical decision statistics filtered by both treatment category and review type.
+- Historical decision statistics filtered by treatment category, review type, and optionally report year.
 - Counts of total decisions, upheld decisions, and overturned decisions.
 - Three example source reference IDs from the matching DMHC records.
 - An editable, template-based healthcare appeal letter draft.
@@ -110,7 +120,7 @@ The application includes:
 
 This prototype integrates Systems Development, Data Management, and Business Analytics.
 
-Data Management uses Python to import real California DMHC decision records into SQLite. Business Analytics filters those records by treatment category and review type to calculate historical decision counts and retrieve example source reference IDs. Systems Development connects the Django form, database queries, displayed results, and editable appeal letter template.
+Data Management uses Python to import real California DMHC decision records into SQLite. Business Analytics filters those records by treatment category, review type, and optionally report year to calculate historical decision counts and retrieve example source reference IDs. Systems Development connects the Django form, database queries, displayed results, and editable appeal letter template.
 
 The workflow moves from the official DMHC CSV to SQLite then through the Django application to the historical statistics and editable letter draft.
 
@@ -120,9 +130,11 @@ Without Data Management the application would not have the public decision recor
 
 The import script checks for missing required values, duplicate reference IDs, and invalid report years. The import script reads five fields from the official CSV: ReferenceID, ReportYear, TreatmentCategory, Type, and Determination. It removes extra spaces from these values, converts report years to numbers, and stores the records in SQLite. The CSV field named Type is stored as review_type in the database. Each import replaces the previously imported records so the database can be recreated without accumulating duplicates. The original CSV is not modified.
 
+The import script also standardizes known inconsistent treatment category labels. Gen Surg proc is standardized to Gen Surg Proc, and DME is standardized to Durable Med Equip. The updated import standardized 2,681 treatment category labels while importing 42,710 records.
+
 The application counts historical decisions by treatment category, including decisions that upheld or overturned the health plan's determination.
 
-The application also filters decisions by review type and displays three example source reference IDs from the matching records.
+The application also filters decisions by review type and optionally report year, and displays three example source reference IDs from the matching records. Selecting All Years includes all available report years.
 
 Using the November 7, 2026 dataset, Pharmacy and Medical Necessity returned:
 
@@ -137,14 +149,17 @@ These historical statistics do not predict the outcome of an individual appeal.
 
 ## Automated Testing
 
-The application includes four automated Django tests:
+The application includes seven automated Django tests:
 
 1. Required fields cannot be left blank.
 2. Denial reasons exceeding 100 characters are rejected.
 3. Invalid treatment categories are rejected.
-4. Historical statistics and source reference IDs are correctly filtered by treatment category and review type.
+4. Valid treatment categories are accepted.
+5. Required fields are checked when valid dropdown choices are available.
+6. Historical statistics and source reference IDs are correctly filtered by treatment category and review type.
+7. Historical statistics are correctly filtered by report year.
 
-All four tests passed on November 8, 2026.
+All seven tests passed on November 23, 2026.
 
 The statistics test uses fictional decision records in a temporary Django test database. The tests do not modify the imported public DMHC records.
 
